@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Litch.web | Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0A0A0F;
+      color: #E4E4E7;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      line-height: 1.2;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      margin-bottom: 1rem;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #C0F2B9, #7B61FF, #FFB86B);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shine 6s linear infinite;
+    }
+    @keyframes shine {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #7B61FF;
+      color: white;
+      box-shadow: 0 8px 20px rgba(123, 97, 255, 0.3);
+    }
+    .btn-primary:hover {
+      background: #624bff;
+      transform: translateY(-3px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+    }
+    .btn-outline:hover {
+      border-color: #7B61FF;
+      background: rgba(123, 97, 255, 0.1);
+    }
+    .navbar {
+      padding: 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+    .logo span {
+      color: #7B61FF;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #E4E4E7;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: #7B61FF; }
+    .hero {
+      padding: 4rem 0 5rem;
+      text-align: center;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 1.5rem auto;
+      color: #A1A1AA;
+    }
+    section {
+      padding: 5rem 0;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-title p {
+      color: #7B61FF;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 2rem;
+      padding: 2rem;
+      transition: 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(123, 97, 255, 0.4);
+    }
+    .service-icon {
+      font-size: 2.5rem;
+      color: #7B61FF;
+      margin-bottom: 1rem;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .portfolio-item {
+      background: #111118;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: 0.3s;
+    }
+    .portfolio-item:hover {
+      transform: scale(1.02);
+      border-color: #7B61FF;
+    }
+    .portfolio-img {
+      height: 180px;
+      background: linear-gradient(135deg, #1e1a2f, #0a0a0f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #7B61FF;
+    }
+    .portfolio-info {
+      padding: 1.5rem;
+    }
+    .contact-form {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.03);
+      padding: 2.5rem;
+      border-radius: 2rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 1rem;
+      background: #0F0F15;
+      border: 1px solid #2A2A35;
+      border-radius: 1rem;
+      color: white;
+      margin-bottom: 1rem;
+      font-family: inherit;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #7B61FF;
+    }
+    button[type="submit"] {
+      width: 100%;
+      justify-content: center;
+    }
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2rem 0;
+      text-align: center;
+      color: #6C6C7A;
+    }
+    .social-links a {
+      color: #A1A1AA;
+      font-size: 1.3rem;
+      margin: 0 0.75rem;
+      transition: color 0.2s;
+    }
+    .social-links a:hover { color: #7B61FF; }
+    @media (max-width: 768px) {
+      .navbar { flex-direction: column; text-align: center; }
+      .nav-links { flex-wrap: wrap; justify-content: center; }
+    }
+    .phone-big {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #C0F2B9;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar container">
+  <div class="logo">Litch<span>.web</span></div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#portfolio">Work</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="btn-outline" style="padding:0.5rem 1.2rem;">Call me</a>
+  </div>
+</nav>
+
+<main>
+  <section class="hero container">
+    <h1>Hi, I'm <span class="gradient-text">Litch</span><br>Web Developer</h1>
+    <p>I build modern, fast, and honest websites for local businesses. No fake promises — just clean code and real communication.</p>
+    <div class="hero-buttons" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2rem;">
+      <a href="#contact" class="btn btn-primary"><i class="fas fa-comment"></i> Let's talk</a>
+      <a href="#portfolio" class="btn btn-outline"><i class="fas fa-code"></i> My work</a>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-title"><p>What I offer</p><h2>Services built for real needs</h2></div>
+      <div class="services-grid">
+        <div class="service-card"><div class="service-icon"><i class="fas fa-globe"></i></div><h3>Modern Websites</h3><p>Responsive, fast, and tailored to your business. One-page or multi-page.</p></div>
+        <div class="service-card"><div class="service-icon"><i class="fas fa-map-marker-alt"></i></div><h3>Google Maps Ready</h3><p>I help local businesses show up on Google Maps with basic SEO.</p></div>
+        <div class="service-card"><div class="service-icon"><i class="fas fa-hand-holding-usd"></i></div><h3>Affordable & Honest</h3><p>No hidden fees. You pay for what you need — starting from simple packages.</p></div>
+        <div class="service-card"><div class="service-icon"><i class="fas fa-headset"></i></div><h3>Support & Maintenance</h3><p>Monthly updates, backups, and someone who actually picks up the phone.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-title"><p>Real work</p><h2>What I've built (no lies)</h2></div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <div class="portfolio-img"><i class="fas fa-laptop-code"></i></div>
+          <div class="portfolio-info">
+            <h3>Litch.web</h3>
+            <p>This website — my personal brand and portfolio. Fully custom HTML/CSS.</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-img"><i class="fas fa-tools"></i></div>
+          <div class="portfolio-info">
+            <h3>Demo: Carpet Cleaner</h3>
+            <p>A concept site I built to show local service businesses (ready to adapt for a real client).</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-img"><i class="fas fa-user-plus"></i></div>
+          <div class="portfolio-info">
+            <h3>First client spot</h3>
+            <p>This space is reserved for YOUR business. Let’s build something together.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-title"><p>Let's connect</p><h2>Reach me directly</h2></div>
+      <div class="contact-form">
+        <p style="text-align:center; margin-bottom:1.5rem;">📞 <a href="tel:+27656796229" class="phone-big">065 679 6229</a> (call or WhatsApp)</p>
+        
+        <!-- Formspree integration with your live endpoint -->
+        <form action="https://formspree.io/f/xbdegaeg" method="POST">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+          <input type="tel" name="phone" placeholder="Phone (optional)">
+          <textarea name="message" rows="4" placeholder="Tell me what you need..."></textarea>
+          <button type="submit" class="btn btn-primary">Send message →</button>
+        </form>
+        <!-- End of Formspree form -->
+
+        <p style="font-size:0.8rem; text-align:center; margin-top:1.5rem;">Or find me on LinkedIn: <strong><a href="https://www.linkedin.com/in/litshedzani-nguluvhe-079494249/" target="_blank" id="linkedin-link" style="color:#7B61FF;">Litshedzani Nguluvhe</a></strong></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/litshedzani-nguluvhe-079494249/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="tel:+27656796229"><i class="fas fa-phone-alt"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+    <p>© 2026 Litch.web — Built by Litshedzani Nguluvhe. No fake clients, just real work.</p>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
